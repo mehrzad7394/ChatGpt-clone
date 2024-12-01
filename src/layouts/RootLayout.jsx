@@ -12,7 +12,7 @@ if (!PUBLISHABLE_KEY) {
 const RootLayout = () => {
   return (
     <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
-      <div className="py-4 px-16 h-screen flex flex-col">
+      <div className="py-4 px-3 md:px-10 h-screen flex flex-col">
         <header className="flex items-center justify-between">
           <Link to={"/"} className="flex font-bold items-center gap-2">
             <img src="/logo.png" alt="" width={32} height={32} />
@@ -24,7 +24,7 @@ const RootLayout = () => {
             </SignedIn>
           </div>
         </header>
-        <main className="flex-1 overflow-hidden">
+        <main className="flex-1 ">
           <Outlet />
         </main>
       </div>
