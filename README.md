@@ -15,6 +15,7 @@ This project demonstrates how to build a **full-stack AI-powered chat applicatio
 
 ## 🛠️ Technologies Used
 - **React** (front-end)
+- **ThailwindCss**(Css library)
 - **Express.js** (back-end)
 - **MongoDB** (database)
 - **Google Gemini AI** (AI integration)
