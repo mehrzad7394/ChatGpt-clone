@@ -1,9 +1,8 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 const ChatList = () => {
   return (
-    <div className="flex flex-col h-full gap-2 py-1">
+    <div className="w-72 sticky top-16 hidden md:flex flex-col gap-2 h-[calc(100vh-64px)] py-1 overflow-auto pe-2">
       <span className="font-semibold text-xs">DASHNOARD</span>
       <Link to={"/dashboard"}> Dashboard</Link>
       <Link to={"/"}>Explore</Link>
@@ -42,9 +41,11 @@ const ChatList = () => {
       <hr className="border-none h-[2px] bg-[#ddd] opacity-5 my-2 rounded-sm " />
       <div className="text-xs  gap-2  flex  mt-auto">
         <img src="/logo.png" alt="" className="w-5 h-5" />
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-1">
           <span className="text-sm font-semibold">Upgrade to premium</span>
-          <span className="text-xs font-semibold text-[#808080]">Get Unlimited Access to all feautures</span>
+          <span className="text-xs font-semibold text-[#888]">
+            Get Unlimited Access to all feautures
+          </span>
         </div>
       </div>
     </div>

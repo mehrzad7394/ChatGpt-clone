@@ -13,9 +13,9 @@ const DashboardLayout = () => {
   }, [isLoaded, userId, navigate]);
   if (!isLoaded) return "Loading...";
   return (
-    <div className="flex gap-9 h-full mt-4">
-      <div className="w-52"><ChatList/></div>
-      <div className="flex-1 bg-[#12101d]">
+    <div className="flex flex-1 ps-2 gap-2">
+      <ChatList />
+      <div className="w-full bg-[#12101d] h-full flex flex-col ">
         <Outlet />
       </div>
     </div>
