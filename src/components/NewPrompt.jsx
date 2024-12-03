@@ -10,8 +10,8 @@ const NewPrompt = () => {
   }, []);
   return (
     <>
-      {/* <div className="pb-3" ref={endRef}></div> */}
-      <form className="w-full absolute  bg-[#2c2937] rounded-3xl flex items-center gap-5 px-5 py-1">
+      <div className="pb-3" ref={endRef}></div>
+      <form className="w-full md:w-[50%] absolute bottom-2  bg-[#2c2937] rounded-3xl flex items-center gap-5 px-5 h-16">
         <label
           htmlFor="file"
           className="rounded-full bg-[#605e68] border-none p-3 flex items-center justify-center cursor-pointer"
