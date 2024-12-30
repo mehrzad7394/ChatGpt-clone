@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { TypeAnimation } from "react-type-animation";
-
 const HomePage = () => {
   const [typingStatus, setTypingStatus] = useState("Human1");
+
   return (
     <div className="flex flex-1 flex-col items-center justify-between gap-24  relative py-2 overflow-auto px-2">
       <div className="grid md:grid-cols-2 items-center gap-2 justify-center h-full">

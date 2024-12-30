@@ -4,7 +4,7 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.env
+
 # Dependency directories
 node_modules/
 .pnp/
@@ -14,14 +14,12 @@ node_modules/
 dist/
 build/
 *.cache/
-.cache/
 
 # Runtime files
 *.pid
 *.pid.lock
 server-debug.log
-.env
-.env.*.local
+.env*
 
 # Temporary files
 *.tmp
@@ -38,7 +36,6 @@ server-debug.log
 .DS_Store
 Thumbs.db
 Desktop.ini
-
 
 # Coverage files
 coverage/

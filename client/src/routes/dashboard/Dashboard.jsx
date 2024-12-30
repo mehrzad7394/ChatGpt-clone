@@ -1,4 +1,36 @@
+import { useAuth } from "@clerk/clerk-react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
+
 const Dashboard = () => {
+  const { getToken } = useAuth();
+  const queryClient = useQueryClient();
+  const navigate = useNavigate();
+  const mutation = useMutation({
+    mutationFn: async (text) => {
+      const token = await getToken();
+      return fetch(`${import.meta.env.VITE_API_URL}/api/chats`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ text: text }),
+      }).then((res) => res.json());
+    },
+
+    onSuccess: (id) => {
+      // Invalidate and refetch
+      queryClient.invalidateQueries({ queryKey: ["userChats"] });
+      navigate(`/dashboard/chats/${id}`);
+    },
+  });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const text = e.target.text.value;
+    if (!text) return;
+    mutation.mutate(text);
+  };
   return (
     <div className="h-full flex flex-col items-center py-2">
       <div className="flex-1 flex flex-col items-center justify-center w-[90%] gap-10">
@@ -25,8 +57,12 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="mt-auto w-[90%] bg-[#2c2937] rounded-3xl flex">
-        <form className="w-full h-full flex items-center justify-between gap-5 mb-3">
+        <form
+          className="w-full h-full flex items-center justify-between gap-5 mb-3"
+          onSubmit={handleSubmit}
+        >
           <input
+            name="text"
             type="text"
             placeholder="Ask me anything..."
             className="flex-1 p-5 text-sm bg-transparent outline-none text-[#ececec]"
