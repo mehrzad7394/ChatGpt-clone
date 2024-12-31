@@ -103,6 +103,36 @@ app.get("/api/chats/:id", verifyTokenMiddleware, async (req, res) => {
     res.status(500).send("Error Fetching userchats");
   }
 });
+app.put("/api/chats/:id", verifyTokenMiddleware, async (req, res) => {
+  const userId = req.verifiedToken.sub;
+  const { question, answer, img } = req.body;
+  const newItems = [
+    ...(question
+      ? [{ role: "user", parts: [{ text: question }], ...(img && { img }) }]
+      : []),
+    { role: "model", parts: [{ text: answer }] },
+  ];
+  try {
+    const updatedChat = await Chat.updateOne(
+      { _id: req.params.id, userId },
+      {
+        $push: {
+          history: {
+            $each: newItems,
+          },
+        },
+      }
+    );
+    res.status(200).send(updatedChat);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Error adding converstation!");
+  }
+});
+
+app.get("*", (req, res) => {
+  res.sendFile("/client/index.html");
+});
 app.listen(port, () => {
   connect();
   console.log("server running");
