@@ -7,8 +7,12 @@ import Chat from "./models/chat.js";
 import UserChats from "./models/userChat.js";
 import cookieParser from "cookie-parser";
 import verifyTokenMiddleware from "./middlewares/verifyTokenMiddleware.js";
+import path from "path";
+import url, { fileURLToPath } from "url";
 const port = process.env.PORT || 3000;
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const app = express();
 app.use(
   cors({
@@ -129,9 +133,9 @@ app.put("/api/chats/:id", verifyTokenMiddleware, async (req, res) => {
     res.status(500).send("Error adding converstation!");
   }
 });
-
+app.use(express.static(path.join(__dirname, "../client")));
 app.get("*", (req, res) => {
-  res.sendFile("/client/index.html");
+  res.sendFile(path.join(__dirname, "../client", "index.html"));
 });
 app.listen(port, () => {
   connect();
