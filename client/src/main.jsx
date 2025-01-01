@@ -9,7 +9,7 @@ import DashboardLayout from "./layouts/DashboardLayout.jsx";
 import "./index.css";
 import SignInPage from "./routes/signinpage/SignInPage.jsx";
 import SignUpPage from "./routes/signuppage/SignUpPage.jsx";
-
+import { ToastContainer } from "react-toastify";
 const router = createBrowserRouter([
   {
     element: <RootLayout />,
@@ -33,6 +33,7 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    <ToastContainer />
     <RouterProvider router={router} />
   </React.StrictMode>
 );

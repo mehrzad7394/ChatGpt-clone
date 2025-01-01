@@ -19,7 +19,7 @@ build/
 *.pid
 *.pid.lock
 server-debug.log
-# .env*
+.env*
 
 # Temporary files
 *.tmp
